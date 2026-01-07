@@ -1,0 +1,58 @@
+<mxfile host="65bd71144e">
+    <diagram id="parking-arch-1" name="Parking Architecture">
+        <mxGraphModel dx="954" dy="1637" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="HC-SR04 (ultrasonic)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFF2CC;" parent="1" vertex="1">
+                    <mxGeometry x="40" y="120" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="ESP32 firmware publishes \`parking_status\`" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#DAE8FC;" parent="1" vertex="1">
+                    <mxGeometry x="240" y="110" width="200" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="MQTT / TLS (port 8883)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#E1F5E0;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="120" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="ThingsBoard" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#F3F3F3;" parent="1" vertex="1">
+                    <mxGeometry x="680" y="60" width="450" height="260" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="MQTT Ingress" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFF2CC;" parent="1" vertex="1">
+                    <mxGeometry x="720" y="80" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Rule Chains (store TS, change origin -&gt; Asset)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#DAE8FC;" parent="1" vertex="1">
+                    <mxGeometry x="900" y="80" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Aggregator (sum parking_status)" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#E1F5E0;" parent="1" vertex="1">
+                    <mxGeometry x="820" y="160" width="200" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="Asset: ParkingLot_A telemetry: \`total_occupied\`" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFF2CC;" parent="1" vertex="1">
+                    <mxGeometry x="720" y="240" width="300" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="Dashboard / UI (Entity Alias -&gt; Asset) post-process: return N - value;" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#FFF2F2;" parent="1" vertex="1">
+                    <mxGeometry x="1160" y="140" width="220" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" parent="1" source="2" target="3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" parent="1" source="3" target="4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" parent="1" source="4" target="6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" parent="1" source="6" target="7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" parent="1" source="7" target="8" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" parent="1" source="8" target="9" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" parent="1" source="9" target="10" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
